@@ -8,7 +8,5 @@
 
 
 class Baidufuseconf(object):
-    baidu_token = \
-        '3.b4f65fc32ef40f549fd39b1031d4ab61.\
-        2592000.1385056694.3624830013-1570570'
-    baidu_rootdir = '/apps/boh/good'
+    baidu_token = '' 
+    baidu_rootdir = ''
