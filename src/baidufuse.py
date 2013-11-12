@@ -60,7 +60,7 @@ class BaiduFS(Fuse):
         self.disk = BaiduPan(Baidufuseconf.baidu_token)
 
     def get_abs_path(self, path):
-        return "%s%s" % (baidu_rootdir, path)
+        return "%s%s" % (Baidufuseconf.baidu_rootdir, path)
 
     def getattr(self, path):
         logger.error("getattr is: " + path)
@@ -109,21 +109,7 @@ class BaiduFS(Fuse):
     def read(self, path, size, offset):
         logger.error("read is: " + path)
         abs_path = self.get_abs_path(path)
-        paras = {'Range': 'bytes=%s-%s' % (offset, offset + size)}
-        return self.disk.download(abs_path, paras)
+        paras = {'Range': 'Range: bytes=%s-%s' % (offset, offset + size)}
+        return self.disk.download(abs_path, headers = paras)
 
 
-def main():
-    usage = """
-Userspace Fuse for baidu pan
-
-""" + Fuse.fusage
-    server = BaiduFS(version="%prog " + fuse.__version__,
-                     usage=usage,
-                     dash_s_do='setsingle')
-
-    server.parse(errex=1)
-    server.main()
-
-if __name__ == '__main__':
-    main()
