@@ -13,3 +13,14 @@ https://github.com/solos/baidupan
 http://sourceforge.net/apps/mediawiki/fuse/?title=FUSE_Python_tutorial
 
 3.fuse
+
+==========
+
+使用：  
+1. 填写baidufuseconf.py中的token和rootdir。（从baidu pcs上获取token和设置rootdir)  
+2. 使用命令baidufuse挂载到某个目录  
+baidufuse  mnt/  
+3. 所挂载的目录可以看到百度盘上的文件，目录。  
+
+备注：  
+目前未实现写文件的功能。  
